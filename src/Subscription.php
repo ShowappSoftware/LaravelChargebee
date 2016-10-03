@@ -1,9 +1,8 @@
 <?php
 namespace TijmenWierenga\LaravelChargebee;
 
-
-use App\User;
 use Carbon\Carbon;
+use App\Models\Account;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -14,7 +13,7 @@ class Subscription extends Model
 {
     use HandlesWebhooks;
 
-    protected $fillable = ['subscription_id', 'plan_id', 'user_id', 'quantity', 'last_four', 'trial_ends_at', 'ends_at', 'next_billing_at'];
+    protected $fillable = ['subscription_id', 'plan_id', 'account_id', 'quantity', 'last_four', 'trial_ends_at', 'ends_at', 'next_billing_at'];
 
     /**
      * @var array
@@ -24,10 +23,10 @@ class Subscription extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user()
+    public function account()
     {
-        $model = env('CHARGEBEE_MODEL') ?: config('chargebee.model', User::class);
-        return $this->belongsTo($model, 'user_id');
+        $model = env('CHARGEBEE_MODEL') ?: config('chargebee.model', Account::class);
+        return $this->belongsTo($model, 'account_id');
     }
 
     /**
