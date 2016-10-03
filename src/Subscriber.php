@@ -127,6 +127,20 @@ class Subscriber
         ])->hostedPage()->url;
     }
 
+    public function updatePaymentMethod($embed = false)
+    {
+        $result = ChargeBee_HostedPage::updatePaymentMethod([
+            "customer" => [
+                "id" => $this->model->customer_id,
+            ],
+            'embed' => $embed,
+            'redirectUrl' => $this->config['redirect']['success'],
+            'cancelledUrl' => $this->config['redirect']['cancelled'],
+            'passThruContent' => base64_encode($this->model->id)
+        ]);
+        return $result->hostedPage()->url;
+    }
+
     /**
      * Retrieve a hosted page and register a user based on the result of the payment.
      *
