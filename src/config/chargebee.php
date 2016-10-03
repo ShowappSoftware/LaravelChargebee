@@ -2,7 +2,7 @@
 
 return [
     // You can set the entity who gets subscribed here.
-    'model' => App\User::class,
+    'model' => App\Models\Account::class,
 
     // Define your callback URI's here
     'redirect' => [
