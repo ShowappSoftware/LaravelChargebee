@@ -181,7 +181,7 @@ class Subscriber
             }
         }
 
-        return $subscription;
+        return $result;
     }
 
     /**
