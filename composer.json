@@ -26,9 +26,9 @@
         }
     ],
     "require": {
-        "illuminate/support": "dev-master",
-        "illuminate/database": "dev-master",
-        "illuminate/console": "dev-master",
+        "illuminate/support": "^7.0",
+        "illuminate/database": "^7.0",
+        "illuminate/console": "^7.0",
         "php" : "~7.2",
         "chargebee/chargebee-php": "^2.7.2",
         "stripe/stripe-php": "^7.27.0"
