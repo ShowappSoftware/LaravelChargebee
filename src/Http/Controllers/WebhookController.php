@@ -4,6 +4,7 @@ namespace TijmenWierenga\LaravelChargebee\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use TijmenWierenga\LaravelChargebee\Subscription;
 
 /**
@@ -18,7 +19,7 @@ class WebhookController extends Controller
      */
     public function handleWebhook(Request $request)
     {
-        $webhookEvent = studly_case($request->event_type);
+        $webhookEvent = Str::studly($request->event_type);
 
         if (method_exists($this, 'handle' . $webhookEvent)) {
             $payload = json_decode(json_encode($request->input('content')));
